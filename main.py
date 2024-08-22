@@ -45,7 +45,7 @@ def is_vanity_url_available():
         return False
 
 def claim_vanity_url():
-    global invalid_request_counter
+    global invalid_request_counter #cloudyork's magic
     data = {"code": DESIRED_VANITY_URL}
     response = requests.patch(TARGET_API_URL, headers=headers, json=data)
     
@@ -62,7 +62,7 @@ def claim_vanity_url():
         print(f"Failed to claim vanity URL. Status Code: {response.status_code} - {response.json().get('message')}")
     
     invalid_request_counter += 1
-    print(f"Invalid request count: {invalid_request_counter}")
+    print(f"Invalid request count: {invalid_request_counter}\nDiscord: cloudyork")
     return False
 
 def run_monitor():
@@ -71,7 +71,7 @@ def run_monitor():
             success = claim_vanity_url()
             if success:
                 break
-        time.sleep(0.2)  # Wait 30 seconds before checking again
+        time.sleep(2)  # Wait 2 seconds before checking again
 def run_web():
     app.run(host='0.0.0.0', port=8080)
 if __name__ == "__main__":
