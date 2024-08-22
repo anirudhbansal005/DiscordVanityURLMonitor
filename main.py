@@ -10,16 +10,16 @@ app = Flask(__name__)
 def home():
     return f"Bot is running! Invalid request attempts: {invalid_request_counter}"
 
-TARGET_GUILD_ID = ""
-DESIRED_VANITY_URL = ''
+TARGET_GUILD_ID = "TARGET_GUILD_ID"
+DESIRED_VANITY_URL = 'DESIRED_VANITY_URL'
 TARGET_API_URL = f"https://discord.com/api/v10/guilds/{TARGET_GUILD_ID}/vanity-url"
 VANITY_CHECK_URL = f"https://discord.com/api/v9/invites/{DESIRED_VANITY_URL}?with_counts=true&with_expiration=true"
 invalid_request_counter = 0
 
 # Headers for authorization
-BOT_TOKEN = ""
+BOT_TOKEN = "BOT_TOKEN" # Bot token won't work. So, use an alternate account's token
 headers = {
-    'Authorization': f'{BOT_TOKEN}',
+    'Authorization': f'{BOT_TOKEN}', 
     'Content-Type': 'application/json',
 }
 
